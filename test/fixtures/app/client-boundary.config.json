@@ -1,0 +1,1 @@
+{ "serverFiles": ["src/server/**"], "allowedBuiltins": ["events"] }
