@@ -1,0 +1,53 @@
+{
+  "name": "next-client-boundary",
+  "version": "0.1.0",
+  "description": "Fails CI when a Next.js \"use client\" component imports server-only code, directly or through other modules.",
+  "keywords": [
+    "nextjs",
+    "react-server-components",
+    "use-client",
+    "server-only",
+    "static-analysis",
+    "ci",
+    "lint"
+  ],
+  "author": "Thomas Hermanu (https://github.com/tmh9x)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmh9x/next-client-boundary.git"
+  },
+  "type": "module",
+  "bin": {
+    "next-client-boundary": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test \"test/**/*.test.ts\"",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
